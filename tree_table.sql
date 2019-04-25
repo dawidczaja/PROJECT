@@ -1,4 +1,4 @@
-#insert into chapter_73 (HTS_code, lft, rght, depth, title) values (73, 1, 217, 0,'Articles of iron or steel');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values (73, 1, 217, 0,'Articles of iron or steel');
 insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307', 2, 216, 1,'Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel');
 insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.1', 3, 24, 2,'Cast fittings');
 insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.2', 25, 90, 2,'Other, of stainless steel');
@@ -91,6 +91,21 @@ insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.93.9110
 insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.93.9190', 168, 169, 6,'Other');
 insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.93.9910', 172, 173, 6,'For use in certain types of aircraft');
 insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.93.9990', 174, 175, 6,'Other');
-
-
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.10', 180, 185, 4,'Threaded');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.80', 186, 213, 4,'Other');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.1010', 181, 182, 5,'For use in certain types of aircraft');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.1090', 183, 184, 5,'Other');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('', 187, 196, 5,'For use in certain types of aircraft');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('', 197, 212, 5,'Other');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.801', 188, 193, 6,'With greatest external diameter not exceeding 609,6 mm');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.8020', 194, 195, 6,'Other');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.809', 198, 209, 6,'With greatest external diameter not exceeding 609,6 mm');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.8099', 210, 211, 6,'Other');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.8011', 189, 190, 7,'Consigned from Taiwan, Indonesia, Sri Lanka or the Philippines');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.8019', 191, 192, 7,'Other');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.8092', 199, 200, 7,'Consigned from Taiwan');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.8093', 201, 202, 7,'Consigned from Indonesia');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.8094', 203, 204, 7,'Consigned from Sri Lanka');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.8095', 205, 206, 7,'Consigned from the Philippines');
+insert into chapter_73 (HTS_code, lft, rght, depth, title) values ('7307.99.8098', 207, 208, 7,'Other');
 select * from chapter_73;
