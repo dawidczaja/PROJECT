@@ -1,0 +1,37 @@
+insert into Section_XV (Section, Chapter, Heading, Subheading, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.2', 'Other, of stainless steel', 'Pozostałe, ze stali nierdzewnej');
+insert into Section_XV (Section, Chapter, Heading, Subheading, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.21', 'Flanges', 'Kołnierze');
+insert into Section_XV (Section, Chapter, Heading, CN_code, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.21.00', '7307.21.0010', 'For use in certain types of aircraft', 'Do stosowania w niektórych rodzajach statków powietrznych');
+insert into Section_XV (Section, Chapter, Heading, CN_code, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.21.00', '7307.21.0090', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, Subheading, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.22', 'Threaded elbows, bends and sleeves', 'Gwintowane kolanka, łuki i tuleje');
+insert into Section_XV (Section, Chapter, Heading, CN_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.22.10', 'Sleeves', 'Tuleje');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.22.1010', 'For use in certain types of aircraft', 'Do stosowania w niektórych rodzajach statków powietrznych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.22.1090', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, CN_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.22.90', 'Elbows and bends', '	Kolanka i łuki');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.22.9010', 'For use in certain types of aircraft', 'Do stosowania w niektórych rodzajach statków powietrznych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.22.9090', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, Subheading, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23', 'Butt welding fittings', 'Łączniki spawane doczołowo');
+insert into Section_XV (Section, Chapter, Heading, CN_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.10', 'Elbows and bends', 'Kolanka i łuki');
+insert into Section_XV (Title_EN, Title_PL) values ('Of austenitic stainless steel grades, corresponding to AISI types 304, 304L, 316, 316L, 316Ti, 321 and 321H and their equivalent in the other norms, with a greatest external diameter not exceeding 406.4 mm and a wall thickness of 16 mm or less, with a roughness average (Ra) of the internal surface not less than 0.8 micrometres, not flanged, whether or not finished', '	Z gatunków stali nierdzewnej austenitycznej, odpowiadających następującym typom według normy AISI: 304, 304L, 316, 316L, 316Ti, 321 oraz 321H i ich odpowiednikom w innych normach, o maksymalnej średnicy zewnętrznej nieprzekraczającej 406,4 mm i o ściankach o grubości 16 mm lub mniejszej, o średnim współczynniku chropowatości (Ra) powierzchni wewnętrznej nie mniejszym niż 0,8 mikrometra, nie kołnierzowych, nawet obrobionych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.1015', 'For use in certain types of aircraft', 'Do stosowania w niektórych rodzajach statków powietrznych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.1025', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.108', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.1080', 'For use in certain types of aircraft', 'Do stosowania w niektórych rodzajach statków powietrznych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.1085', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, CN_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.90', 'Other', 'Pozostałe');
+insert into Section_XV (Title_EN, Title_PL) values ('Of austenitic stainless steel grades, corresponding to AISI types 304, 304L, 316, 316L, 316Ti, 321 and 321H and their equivalent in the other norms, with a greatest external diameter not exceeding 406.4 mm and a wall thickness of 16 mm or less, with a roughness average (Ra) of the internal surface not less than 0.8 micrometres, not flanged, whether or not finished', '	Z gatunków stali nierdzewnej austenitycznej, odpowiadających następującym typom według normy AISI: 304, 304L, 316, 316L, 316Ti, 321 oraz 321H i ich odpowiednikom w innych normach, o maksymalnej średnicy zewnętrznej nieprzekraczającej 406,4 mm i o ściankach o grubości 16 mm lub mniejszej, o średnim współczynniku chropowatości (Ra) powierzchni wewnętrznej nie mniejszym niż 0,8 mikrometra, nie kołnierzowych, nawet obrobionych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.1015', 'For use in certain types of aircraft', 'Do stosowania w niektórych rodzajach statków powietrznych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.1025', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.108', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.1080', 'For use in certain types of aircraft', 'Do stosowania w niektórych rodzajach statków powietrznych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.23.1085', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, Subheading, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.29', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, CN_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.29.10', 'Threaded', 'Gwintowane');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.29.1010', 'For use in certain types of aircraft', 'Do stosowania w niektórych rodzajach statków powietrznych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.29.1090', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, CN_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.29.80', 'Other', 'Pozostałe');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.29.8010', 'For use in certain types of aircraft', 'Do stosowania w niektórych rodzajach statków powietrznych');
+insert into Section_XV (Section, Chapter, Heading, Full_code, Title_EN, Title_PL) values ("XV", '73', '7307', '7307.29.8090', 'Other', 'Pozostałe');
+
+
+
+select * from section_XV;
