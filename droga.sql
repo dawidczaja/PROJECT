@@ -1,2 +1,2 @@
-select depth, hts_code, title from chapter_73 where lft <=129 and rght >=130;
-#znajacc left_mark i right_mark mozemy wyświetlic kada drogę od korzenia do docelowego 10-cio cyfrowego kodu
+select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73 where left_mark <=129 and right_mark >=130;
+#znajac left_mark i right_mark mozemy wyświetlic kazda drogę od korzenia do docelowego 10-cio cyfrowego kodu

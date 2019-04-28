@@ -1,7 +1,3 @@
-select id, concat(repeat ('-', 
-(select count(parent.id)-1 from chapter_73 as parent 
-where node.lft between parent.lft and parent.rght)
-), node.hts_code) as hts_code, title, lft, rght, depth from chapter_73 as node 
-where node.lft between 10 and 23
-order by node.lft;
-# '10' i '23' kolejno left_mark i right_ mark; podajac te liczby wyswietlimy dana czesc gałęzi drzewa jakim jest tabela
+select id, concat(repeat ('-', (select count(parent.id)-1 from chapter_73 as parent where node.left_mark between parent.left_mark and parent.right_mark)), node.hts_code) as hts_code, title, left_mark, right_mark, depth from chapter_73 as node where node.left_mark between 10 and 23 order by node.left_mark;
+#select concat(repeat ('-', (select count(parent.id)-1 from chapter_73 as parent where node.left_mark between parent.left_mark and parent.right_mark)), node.hts_code) as hts_code, title, depth from chapter_73 as node where node.left_mark between 10 and 23 order by node.left_mark;
+# '10' i '23' kolejno left_mark i right_ mark; podajac te liczby wyswietlimy dana czesc gałęzi drzewa - tabeli
