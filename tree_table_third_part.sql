@@ -1,3 +1,11 @@
+create table Chapter_76 (
+Id int(10) not null auto_increment primary key, 
+HTS_code varchar(150) not null default'', 
+left_mark int(10) not null, 
+right_mark int(10) not null,
+Depth int(8) not null, 
+Title text 
+);
 insert into chapter_76 (HTS_code, left_mark, right_mark, Depth, Title) values ('76', 1, 74, 0,'Aluminium and articles thereof');
 insert into chapter_76 (HTS_code, left_mark, right_mark, Depth, Title) values ('7609', 2, 9, 1,'Aluminium tube or pipe fittings (for example, couplings, elbows, sleeves)');
 insert into chapter_76 (HTS_code, left_mark, right_mark, Depth, Title) values ('7616', 10, 73, 1,'Other articles of aluminium');
@@ -35,3 +43,4 @@ insert into chapter_76 (HTS_code, left_mark, right_mark, Depth, Title) values ('
 insert into chapter_76 (HTS_code, left_mark, right_mark, Depth, Title) values ('7616.99.909', 63, 68, 6,'Other');
 insert into chapter_76 (HTS_code, left_mark, right_mark, Depth, Title) values ('7616.99.9091', 64, 65, 7,'Aluminium radiators and elements or sections of which such radiator is composed, whether or not such elements are assembled in blocks');
 insert into chapter_76 (HTS_code, left_mark, right_mark, Depth, Title) values ('7616.99.9099', 66, 67, 7,'Other');
+select * from chapter_76
