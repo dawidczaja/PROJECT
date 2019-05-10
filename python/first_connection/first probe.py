@@ -320,7 +320,10 @@ class DBConnect():
             if (fec1 == 'OT'):
                 self.class_ot()
 
-
+    """
+        def class_th(self):
+        input(' TH - threaded, NTH - non-threaded, B3 - back').upper()
+    """
 
     def class_thdd(self):
 
