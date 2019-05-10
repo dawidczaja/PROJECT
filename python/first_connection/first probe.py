@@ -42,7 +42,6 @@ class DBConnect():
 
             data = config.read_data()
 
-            #conn = pymysql.connect(host='127.0.0.1', port='3306', user='root', pasword=, db='pymysql', charset="utf8")"""autocommit=True"""
             self.conn = pymysql.connect(data["host"], data['user'], data['password'], data['baza'], charset="utf8")
             self.logowanie()
             self.conn.close()
@@ -75,11 +74,12 @@ class DBConnect():
 
         while (True):
 
-            dec = input("S - show, Q - exit").upper()
+            dec = input("S - show whole table, C - classification, Q - exit").upper()
 
             if (dec == "S"):
                 self.select()
-
+            if (dec == "C"):
+                self.class_1_type()
             if (dec == "Q"):
                 exit()
 
@@ -99,8 +99,90 @@ class DBConnect():
             DEPTH = 3
             HTS_CODE = 4
             TITLE = 5
-            print(" | %3i | | %-12s | | %9i | | %10i | | %5i | | %-360s |" % (row[ID], row[LEFT_MARK], row[RIGHT_MARK], row[DEPTH], row[HTS_CODE], row[TITLE]))
+            print(" | %3i | | %-12s | | %9i | | %10i | | %5i | | %-360s |" % (
+                row[ID], row[LEFT_MARK], row[RIGHT_MARK], row[DEPTH], row[HTS_CODE], row[TITLE]))
             i+=1
+
+    def class_1_type(self):
+
+        sec = input("Choose sort of part from the list: T - tube or pipe fitting; H - hose fitting. B1 - back").upper()
+
+        if (sec == 'T'):
+            self.class_2_matF()
+        if (sec == 'H'):
+            self.class_3_matH()
+        if (sec == 'B1'):
+            self.menu()
+
+    def class_2_matF(self):
+
+        fec = input('Choose material from the list: '
+                    'CT - cast steel and cast iron; '
+                    'SST - stainless steel; '
+                    'ST - steel and other steel alloys; '
+                    'CU - copper and its alloys; '
+                    'AL - aluminium and its alloys; '
+                    'B2 - back').upper()
+
+        if (fec == 'CT'):
+            bec = input('Choose material from the list: ; B - back')
+        if (fec == 'SST'):
+            fec4 = input()
+        if (fec == 'ST'):
+
+            self.kursor.execute("select left_mark, right_mark, depth, concat(repeat ('-', (select count(parent.id)-1 from chapter_73 as parent where node.left_mark between parent.left_mark and parent.right_mark)), node.hts_code) as hts_code, title from chapter_73 as node where node.left_mark between 91 and 215 order by node.left_mark;")
+            chapter_73 = self.kursor.fetchall()
+            print(" | %9s | | %10s | | %5s | | %-20s | | %-360s | " % (
+                'left_mark', 'right_mark', 'depth', 'HTS_code', 'title'))
+
+            for row in chapter_73:
+
+                LEFT_MARK = 0
+                RIGHT_MARK = 1
+                DEPTH = 2
+                HTS_CODE = 3
+                TITLE = 4
+                print(" | %9s | | %10s | | %5s | | %-20s | | %-360s |" % (
+                    row[LEFT_MARK], row[RIGHT_MARK], row[DEPTH], row[HTS_CODE], row[TITLE]))
+
+            fec1 = input(' TH - threaded, NTH - non-threaded, B3 - back').upper()
+
+            if (fec1 == 'TH'):
+                fec2 = input('E - elbows; BE - bends; SL - sleeves; OT - other; B4 - back').upper()
+                if (fec2 == 'E'):
+                    pass
+            if (fec1 == 'NTH'):
+                pass
+            if (fec1 == 'B3'):
+                print(fec)
+
+        if (fec == 'CU'):
+            pass
+
+        if (fec == 'AL'):
+            pass
+
+        if (fec == 'B2'):
+            pass
+
+        if (fec == 'B2'):
+            pass
+            self.class_1_type()
+
+    def class_3_matH(self):
+
+        pec = input(
+            'What material is it made of? Choose from the list: '
+            'CT - cast steel and cast iron; SST - stainless steel; '
+            'ST - steel and other steel alloys; C - copper and its alloys; A - aluminium and its alloys; B - back')
+
+        if (pec == ''):
+            bec = input('What material is it made of? Choose from the list: cast steel and cast iron; '
+            'ST - steel and other steel alloys; C - copper and its alloys; A - aluminium and its alloys; B - back')
+
+        if (pec == 'B'):
+            self.menu()
+
 
 db = DBConnect(c)
 
