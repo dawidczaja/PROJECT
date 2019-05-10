@@ -79,7 +79,7 @@ class DBConnect():
             if (dec == "S"):
                 self.select()
             if (dec == "C"):
-                self.class_1_type()
+                self.class_c()
             if (dec == "Q"):
                 exit()
 
@@ -103,18 +103,21 @@ class DBConnect():
                 row[ID], row[LEFT_MARK], row[RIGHT_MARK], row[DEPTH], row[HTS_CODE], row[TITLE]))
             i+=1
 
-    def class_1_type(self):
+    def class_c(self):
 
-        sec = input("Choose sort of part from the list: T - tube or pipe fitting; H - hose fitting. B1 - back").upper()
+        sec = input("Choose sort of part from the list: "
+                    "T - tube or pipe fitting; "
+                    "H - hose fitting. "
+                    "B1 - back").upper()
 
         if (sec == 'T'):
-            self.class_2_matF()
+            self.class_t()
         if (sec == 'H'):
-            self.class_3_matH()
+            self.class_h()
         if (sec == 'B1'):
             self.menu()
 
-    def class_2_matF(self):
+    def class_t(self):
 
         fec = input('Choose material from the list: '
                     'CT - cast steel and cast iron; '
@@ -125,51 +128,64 @@ class DBConnect():
                     'B2 - back').upper()
 
         if (fec == 'CT'):
-            bec = input('Choose material from the list: ; B - back')
+            self.class_ct()
         if (fec == 'SST'):
-            fec4 = input()
+            self.class_sst()
         if (fec == 'ST'):
-
-            self.kursor.execute("select left_mark, right_mark, depth, concat(repeat ('-', (select count(parent.id)-1 from chapter_73 as parent where node.left_mark between parent.left_mark and parent.right_mark)), node.hts_code) as hts_code, title from chapter_73 as node where node.left_mark between 91 and 215 order by node.left_mark;")
-            chapter_73 = self.kursor.fetchall()
-            print(" | %9s | | %10s | | %5s | | %-20s | | %-360s | " % (
-                'left_mark', 'right_mark', 'depth', 'HTS_code', 'title'))
-
-            for row in chapter_73:
-
-                LEFT_MARK = 0
-                RIGHT_MARK = 1
-                DEPTH = 2
-                HTS_CODE = 3
-                TITLE = 4
-                print(" | %9s | | %10s | | %5s | | %-20s | | %-360s |" % (
-                    row[LEFT_MARK], row[RIGHT_MARK], row[DEPTH], row[HTS_CODE], row[TITLE]))
-
-            fec1 = input(' TH - threaded, NTH - non-threaded, B3 - back').upper()
-
-            if (fec1 == 'TH'):
-                fec2 = input('E - elbows; BE - bends; SL - sleeves; OT - other; B4 - back').upper()
-                if (fec2 == 'E'):
-                    pass
-            if (fec1 == 'NTH'):
-                pass
-            if (fec1 == 'B3'):
-                print(fec)
+            self.class_st()
 
         if (fec == 'CU'):
-            pass
+            self.class_cu()
 
         if (fec == 'AL'):
-            pass
+            self.class_al()
 
         if (fec == 'B2'):
-            pass
+            self.class_c()
 
-        if (fec == 'B2'):
-            pass
-            self.class_1_type()
+    def class_st(self):
 
-    def class_3_matH(self):
+        self.kursor.execute("select left_mark, right_mark, depth, concat(repeat ('-', (select count(parent.id)-1 "
+                            "from chapter_73 as parent where node.left_mark between parent.left_mark and "
+                            "parent.right_mark)), node.hts_code) as hts_code, title from chapter_73 as node where "
+                            "node.left_mark between 91 and 215 order by node.left_mark;")
+        chapter_73 = self.kursor.fetchall()
+        print(" | %9s | | %10s | | %5s | | %-20s | | %-360s | " % (
+            'left_mark', 'right_mark', 'depth', 'HTS_code', 'title'))
+
+        for row in chapter_73:
+            LEFT_MARK = 0
+            RIGHT_MARK = 1
+            DEPTH = 2
+            HTS_CODE = 3
+            TITLE = 4
+            print(" | %9s | | %10s | | %5s | | %-20s | | %-360s |" % (
+                row[LEFT_MARK], row[RIGHT_MARK], row[DEPTH], row[HTS_CODE], row[TITLE]))
+
+        fec1 = input(' TH - threaded, NTH - non-threaded, B3 - back').upper()
+
+        if (fec1 == 'TH'):
+            self.class_th()
+        if (fec1 == 'NTH'):
+            self.class_nth()
+        if (fec1 == 'B3'):
+            self.class_t()
+
+    def class_th(self):
+
+        fec2 = input('E - elbows; BE - bends; SL - sleeves; OT - other; B4 - back').upper()
+        if (fec2 == 'E'):
+            self.class_e()
+        if (fec2 == 'BE'):
+            self.class_be()
+        if (fec2 == 'SL'):
+            self.class_sl()
+        if (fec2 == 'OT'):
+            self.class_ot()
+        if (fec2 == 'B4'):
+            self.class_st()
+
+    def class_h(self):
 
         pec = input(
             'What material is it made of? Choose from the list: '
