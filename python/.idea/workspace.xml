@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/first_connection/tariff.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="101" selection-start-line="101" selection-end-line="103" />
+            <state relative-caret-position="-363">
+              <caret line="108" column="21" lean-forward="true" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -28,10 +28,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/first_connection/first probe.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-582">
-              <caret line="183" column="58" lean-forward="true" selection-start-line="183" selection-start-column="58" selection-end-line="183" selection-end-column="58" />
+            <state relative-caret-position="-595">
+              <caret line="322" lean-forward="true" selection-start-line="322" selection-end-line="322" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#1078#1518#0" />
               </folding>
             </state>
           </provider>
@@ -195,6 +196,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="428" y="0" width="1499" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.091718" />
@@ -245,8 +247,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/first_connection/tariff.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="101" selection-start-line="101" selection-end-line="103" />
+        <state relative-caret-position="-363">
+          <caret line="108" column="21" lean-forward="true" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -255,10 +257,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/first_connection/first probe.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-582">
-          <caret line="183" column="58" lean-forward="true" selection-start-line="183" selection-start-column="58" selection-end-line="183" selection-end-column="58" />
+        <state relative-caret-position="-595">
+          <caret line="322" lean-forward="true" selection-start-line="322" selection-end-line="322" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#1078#1518#0" />
           </folding>
         </state>
       </provider>
