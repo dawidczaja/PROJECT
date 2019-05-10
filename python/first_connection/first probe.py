@@ -143,6 +143,28 @@ class DBConnect():
         if (fec == 'B2'):
             self.class_c()
 
+    def class_ct(self):
+
+        fec = input('Choose material from the list: '
+                    'CT - cast steel and cast iron; '
+                    'SST - stainless steel; '
+                    'ST - steel and other steel alloys; '
+                    'CU - copper and its alloys; '
+                    'AL - aluminium and its alloys; '
+                    'B2 - back').upper()
+
+        if (fec == 'CT'):
+            self.class_ct()
+        if (fec == 'SST'):
+            self.class_sst()
+        if (fec == 'ST'):
+            self.class_st()
+
+        if (fec == 'CU'):
+            self.class_cu()
+
+    def class_sst(self):
+        pass
     def class_st(self):
 
         self.kursor.execute("select left_mark, right_mark, depth, concat(repeat ('-', (select count(parent.id)-1 "
@@ -171,6 +193,10 @@ class DBConnect():
         if (fec1 == 'B3'):
             self.class_t()
 
+    def class_cu(self):
+        pass
+    def class_al(self):
+        pass
     def class_th(self):
 
         fec2 = input('E - elbows; BE - bends; SL - sleeves; OT - other; B4 - back').upper()
@@ -184,6 +210,8 @@ class DBConnect():
             self.class_ot()
         if (fec2 == 'B4'):
             self.class_st()
+
+
 
     def class_h(self):
 
