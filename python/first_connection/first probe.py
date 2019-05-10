@@ -133,45 +133,54 @@ class DBConnect():
             self.class_sst()
         if (fec == 'ST'):
             self.class_st()
-
         if (fec == 'CU'):
             self.class_cu()
-
         if (fec == 'AL'):
             self.class_al()
-
         if (fec == 'B2'):
             self.class_c()
 
     def class_ct(self):
 
-        fec = input('Choose material from the list: '
-                    'CT - cast steel and cast iron; '
-                    'SST - stainless steel; '
-                    'ST - steel and other steel alloys; '
-                    'CU - copper and its alloys; '
-                    'AL - aluminium and its alloys; '
-                    'B2 - back').upper()
+        fec1 = input('Choose material from the list: '
+                    'NM - non-malleable cast iron; '
+                    'M - malleable cast iron; '
+                    'CS - cast steel; '
+                    'OT - other; '
+                    'B5 - back').upper()
 
-        if (fec == 'CT'):
-            self.class_ct()
-        if (fec == 'SST'):
-            self.class_sst()
-        if (fec == 'ST'):
-            self.class_st()
-
-        if (fec == 'CU'):
-            self.class_cu()
+        if (fec1 == 'NM'):
+            self.class_nm()
+        if (fec1 == 'M'):
+            self.class_m()
+        if (fec1 == 'CS'):
+            self.class_cs()
+        if (fec1 == 'OT'):
+            self.class_ot()
+        if (fec1 == 'B5'):
+            self.class_t()
 
     def class_sst(self):
-        pass
+        fec1 = input(' TH - threaded, '
+                     'NTH - non-threaded, '
+                     'B6 - back').upper()
+
+        if (fec1 == 'TH'):
+            self.class_sth()
+        if (fec1 == 'NTH'):
+            self.class_snth()
+        if (fec1 == 'B3'):
+            self.class_t()
+
     def class_st(self):
 
         self.kursor.execute("select left_mark, right_mark, depth, concat(repeat ('-', (select count(parent.id)-1 "
                             "from chapter_73 as parent where node.left_mark between parent.left_mark and "
                             "parent.right_mark)), node.hts_code) as hts_code, title from chapter_73 as node where "
                             "node.left_mark between 91 and 215 order by node.left_mark;")
+
         chapter_73 = self.kursor.fetchall()
+
         print(" | %9s | | %10s | | %5s | | %-20s | | %-360s | " % (
             'left_mark', 'right_mark', 'depth', 'HTS_code', 'title'))
 
@@ -195,8 +204,57 @@ class DBConnect():
 
     def class_cu(self):
         pass
+
     def class_al(self):
         pass
+
+    def class_nm(self):
+
+        fec1 = input(' PS - used in pressure systems, NPS - not used in pressure systems, B7 - back').upper()
+
+        if (fec1 == 'PS'):
+            self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
+                                " where left_mark <=5 and right_mark >=6;")
+
+            chapter_73 = self.kursor.fetchall()
+
+            print(" | %5s | | %-20s | | %-82s | " % (
+                'depth', 'HTS_code', 'title'))
+
+            for row in chapter_73:
+                DEPTH = 0
+                HTS_CODE = 1
+                TITLE = 2
+                print(" | %5s | | %-20s | | %-82s |" % (
+                    row[DEPTH], row[HTS_CODE], row[TITLE]))
+        else:
+            self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
+                                " where left_mark <=7 and right_mark >=8;")
+
+            chapter_73 = self.kursor.fetchall()
+
+            print(" | %5s | | %-20s | | %-82s | " % (
+                'depth', 'HTS_code', 'title'))
+
+            for row in chapter_73:
+                DEPTH = 2
+                HTS_CODE = 3
+                TITLE = 4
+                print(" | %5s | | %-20s | | %-82s |" % (
+                    row[DEPTH], row[HTS_CODE], row[TITLE]))
+
+        if (fec1 == 'M'):
+            self.class_m()
+        if (fec1 == 'CS'):
+            self.class_cs()
+        if (fec1 == 'OT'):
+            self.class_ot()
+
+
+
+
+
+
     def class_th(self):
 
         fec2 = input('E - elbows; BE - bends; SL - sleeves; OT - other; B4 - back').upper()
@@ -211,7 +269,21 @@ class DBConnect():
         if (fec2 == 'B4'):
             self.class_st()
 
-
+        fec2 = input('E - elbows; '
+                     'BE - bends; '
+                     'SL - sleeves; '
+                     'OT - other; '
+                     'B4 - back').upper()
+        if (fec2 == 'E'):
+            self.class_e()
+        if (fec2 == 'BE'):
+            self.class_be()
+        if (fec2 == 'SL'):
+            self.class_sl()
+        if (fec2 == 'OT'):
+            self.class_ot()
+        if (fec2 == 'B4'):
+            self.class_st()
 
     def class_h(self):
 
