@@ -70,6 +70,7 @@ class DBConnect():
         else:
             print("niepoprawny login i lub haslo")
             self.logowanie()
+
     def menu(self):
 
         while (True):
@@ -123,58 +124,66 @@ class DBConnect():
                 print('błędna wartośc')
 
     def class_t(self):
+        while (True):
 
-        fec = input('Choose material from the list: ' '\n' 
-                    'CT  - cast steel and cast iron; ''\n'
-                    'SST - stainless steel; ''\n'
-                    'ST  - steel and other steel alloys; ''\n'
-                    'CU  - copper and its alloys; ''\n'
-                    'AL  - aluminium and its alloys; ''\n'
-                    'B2  - back').upper()
+            fec = input('Choose material from the list: ' '\n' 
+                        'CT  - cast steel and cast iron; ''\n'
+                        'SST - stainless steel; ''\n'
+                        'ST  - steel and other steel alloys; ''\n'
+                        'CU  - copper and its alloys; ''\n'
+                        'AL  - aluminium and its alloys; ''\n'
+                        'B  - back').upper()
 
-        if (fec == 'CT'):
-            self.class_ct()
-        if (fec == 'SST'):
-            self.class_sst()
-        if (fec == 'ST'):
-            self.class_st()
-        if (fec == 'CU'):
-            self.class_cu()
-        if (fec == 'AL'):
-            self.class_al()
-        if (fec == 'B2'):
-            self.class_c()
+            if (fec == 'CT'):
+                self.class_ct()
+            if (fec == 'SST'):
+                self.class_sst()
+            if (fec == 'ST'):
+                self.class_st()
+            if (fec == 'CU'):
+                self.class_cu()
+            if (fec == 'AL'):
+                self.class_al()
+            if (fec == 'B'):
+                self.class_c()
+            else:
+                print('błędna wartośc')
 
     def class_ct(self):
 
         fec1 = input('Choose material from the list: ''\n'
-                    'NM - non-malleable cast iron; ''\n'
-                    'M  - malleable cast iron; ''\n'
+                    'NM - non-malleable cast iron [including gray iron]; ''\n'
+                    'M  - malleable cast iron [including white iron]; ''\n'
+                    'D  - ductile cast iron [spheroidal graphite cast iron]; ''\n'
                     'CS - cast steel; ''\n'
                     'OT - other; ''\n'
-                    'B5 - back').upper()
+                    'B - back').upper()
 
         if (fec1 == 'NM'):
             self.class_nm()
         if (fec1 == 'M'):
             self.class_m()
+        if (fec1 == 'D'):
+            self.class_d()
         if (fec1 == 'CS'):
             self.class_cs()
         if (fec1 == 'OT'):
             self.class_ot()
-        if (fec1 == 'B5'):
+        if (fec1 == 'B'):
             self.class_t()
 
     def class_sst(self):
-        fec1 = input(' TH - threaded, '
+
+        a= self.class_th()
+        """fec1 = input(' TH - threaded, '
                      'NTH - non-threaded, '
                      'B6 - back').upper()
-
-        if (fec1 == 'TH'):
-            self.class_sth()
-        if (fec1 == 'NTH'):
+"""
+        if (a == 'TH'):
+            self.menu()
+        if (a == 'NTH'):
             self.class_snth()
-        if (fec1 == 'B3'):
+        if (a == 'B3'):
             self.class_t()
 
     def class_st(self):
@@ -223,36 +232,13 @@ class DBConnect():
             if (fec1 == 'PS'):
                 self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
                                     " where left_mark <=5 and right_mark >=6;")
-
-                chapter_73 = self.kursor.fetchall()
-
-                print(" | %5s | | %-20s | | %-82s | " % (
-                    'depth', 'HTS_code', 'title'))
-
-                for row in chapter_73:
-                    DEPTH = 0
-                    HTS_CODE = 1
-                    TITLE = 2
-                    print(" | %5s | | %-20s | | %-82s |" % (
-                        row[DEPTH], row[HTS_CODE], row[TITLE]))
-                print(self.menu())
+                print(self.results())
 
             if (fec1 == 'NPS'):
                 self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
                                     " where left_mark <=7 and right_mark >=8;")
 
-                chapter_73 = self.kursor.fetchall()
-
-                print(" | %5s | | %-20s | | %-82s | " % (
-                    'depth', 'HTS_code', 'title'))
-
-                for row in chapter_73:
-                    DEPTH = 0
-                    HTS_CODE = 1
-                    TITLE = 2
-                    print(" | %5s | | %-20s | | %-82s |" % (
-                        row[DEPTH], row[HTS_CODE], row[TITLE]))
-                print(self.menu())
+                print(self.results())
 
             if (fec1 == 'B'):
                 self.class_ct()
@@ -269,42 +255,46 @@ class DBConnect():
                          'NTH - non-threaded, ''\n'
                          'ISO - bodies of compression fittings using ISO DIN 13 metric thread and circular junction '
                          'boxes without having a lid''\n'
+                         'B1 - back''\n'
+                         'Q - exit').upper()
+
+            if (fec1 == 'TH'):
+                self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title "
+                                    "from chapter_73 where left_mark <=12 and right_mark >=13;")
+
+                print(self.results())
+
+            if (fec1 == 'NTH' or 'ISO'):
+                self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title "
+                                    "from chapter_73 where left_mark <=14 and right_mark >=15;")
+
+                print(self.results())
+
+            if (fec1 == 'B1'):
+                self.class_ct()
+
+            if (fec1 == 'Q'):
+                exit()
+            else:
+                print('bledna wartosc')
+
+    def class_d(self):
+        while (True):
+
+            fec1 = input('ISO - threaded bodies of compression fittings using ISO DIN 13 metric thread''\n'
+                         'TH - other threaded''\n'
+                         'NTH - non-threaded, ''\n'
                          'B - back''\n'
                          'Q - exit').upper()
 
             if (fec1 == 'TH'):
-                self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                    " where left_mark <=12 and right_mark >=13;")
+                self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title "
+                                    "from chapter_73 where left_mark <=18 and right_mark >=19;")
 
-                chapter_73 = self.kursor.fetchall()
-
-                print(" | %5s | | %-20s | | %-82s | " % (
-                    'depth', 'HTS_code', 'title'))
-
-                for row in chapter_73:
-                    DEPTH = 0
-                    HTS_CODE = 1
-                    TITLE = 2
-                    print(" | %5s | | %-20s | | %-82s |" % (
-                        row[DEPTH], row[HTS_CODE], row[TITLE]))
-                print(self.menu())
+                print(self.results())
 
             if (fec1 == 'NTH' or 'ISO'):
-                self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                    " where left_mark <=14 and right_mark >=15;")
-
-                chapter_73 = self.kursor.fetchall()
-
-                print(" | %5s | | %-20s | | %-82s | " % (
-                    'depth', 'HTS_code', 'title'))
-
-                for row in chapter_73:
-                    DEPTH = 0
-                    HTS_CODE = 1
-                    TITLE = 2
-                    print(" | %5s | | %-20s | | %-82s |" % (
-                        row[DEPTH], row[HTS_CODE], row[TITLE]))
-                print(self.menu())
+                print(self.class_ot())
 
             if (fec1 == 'B'):
                 self.class_ct()
@@ -314,16 +304,23 @@ class DBConnect():
             else:
                 print('bledna wartosc')
 
+    def class_cs(self):
 
-            if (fec1 == 'CS'):
-                self.class_cs()
-            if (fec1 == 'OT'):
-                self.class_ot()
+        print(self.class_ot())
 
-    """
-        def class_th(self):
+    def class_ot(self):
+
+        self.kursor.execute(
+            "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
+            " where left_mark <=20 and right_mark >=21;")
+
+        print(self.results())
+
+    def class_th(self):
+
         input(' TH - threaded, NTH - non-threaded, B3 - back').upper()
-    """
+
+
 
     def class_thdd(self):
 
@@ -368,6 +365,21 @@ class DBConnect():
 
         if (pec == 'B'):
             self.menu()
+
+    def results(self):
+
+        chapter_73 = self.kursor.fetchall()
+
+        print(" | %5s | | %-20s | | %-82s | " % (
+            'depth', 'HTS_code', 'title'))
+
+        for row in chapter_73:
+            DEPTH = 0
+            HTS_CODE = 1
+            TITLE = 2
+            print(" | %5s | | %-20s | | %-82s |" % (
+                row[DEPTH], row[HTS_CODE], row[TITLE]))
+        print(self.menu())
 
 
 db = DBConnect(c)
