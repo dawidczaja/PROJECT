@@ -58,13 +58,27 @@ class DBConnect():
                     'B - back''\n'
                     'Q - exit').upper()
 
-
     def logowanie(self):
+
+        login = input("login")
+        haslo = input("haslo")
 
         self.kursor = self.conn.cursor()
 
-        print("zalogowano")
-        self.menu()
+        self.kursor.execute("select * from logowanie where login = %s and password=%s", (login, haslo))
+        # pobierz wyniki z zapytania select do zmiennej results
+        results = self.kursor.fetchall()
+
+        print(results)
+
+        if (len(results)) == 1:
+
+            print("zalogowano")
+            self.menu()
+
+        else:
+            print("niepoprawny login i lub haslo")
+            self.logowanie()
 
     def menu(self):
 
@@ -82,6 +96,9 @@ class DBConnect():
                 exit()
             else:
                 print('błędna wartośc')
+
+
+
 
     def select(self):
 
@@ -172,7 +189,7 @@ class DBConnect():
 
     def class_sst(self):
 
-        vec = input(' TH - threaded''\n'
+        self.vec = input(' TH - threaded''\n'
                     'NTH - non-threaded''\n'
                     'B - back''\n'
                     'Q - exit').upper()
@@ -224,7 +241,10 @@ class DBConnect():
         pass
 
     def class_al(self):
-        pass
+        alu = self.vec
+        if (alu == 'TH'):
+            print('bingo')
+
 
     def class_nm(self):
 
@@ -800,13 +820,13 @@ class DBConnect():
                             if (fec95 == 'TI'):
                                 self.kursor.execute(
                                     "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                    " where left_mark <=116 and right_mark >=117;")
+                                    " where left_mark <=189 and right_mark >=190;")
 
                                 print(self.results())
                             if (fec95 == 'OT'):
                                 self.kursor.execute(
                                     "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                    " where left_mark <=118 and right_mark >=119;")
+                                    " where left_mark <=191 and right_mark >=192;")
 
                                 print(self.results())
                         if (fec94 == 'OT'):
@@ -816,7 +836,7 @@ class DBConnect():
                             if (fec96 == 'TI'):
                                 self.kursor.execute(
                                     "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                    " where left_mark <=122 and right_mark >=123;")
+                                    " where left_mark <=189 and right_mark >=190;")
 
                                 print(self.results())
                             if (fec96 == 'OT'):
@@ -829,104 +849,34 @@ class DBConnect():
                                 if (fec97 == 'TI'):
                                     self.kursor.execute(
                                         "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=125 and right_mark >=126;")
+                                        " where left_mark <=199 and right_mark >=200;")
 
                                     print(self.results())
                                 if (fec97 == 'I'):
                                     self.kursor.execute(
                                         "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=127 and right_mark >=128;")
+                                        " where left_mark <=201 and right_mark >=202;")
 
                                     print(self.results())
                                 if (fec97 == 'S'):
                                     self.kursor.execute(
                                         "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=129 and right_mark >=130;")
+                                        " where left_mark <=203 and right_mark >=204;")
 
                                     print(self.results())
                                 if (fec97 == 'P'):
                                     self.kursor.execute(
                                         "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=131 and right_mark >=132;")
+                                        " where left_mark <=205 and right_mark >=206;")
 
                                     print(self.results())
 
                                 if (fec97 == 'OT'):
                                     self.kursor.execute(
                                         "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=133 and right_mark >=134;")
+                                        " where left_mark <=207 and right_mark >=208;")
 
                                     print(self.results())
-                    if (fec93 == 'OT'):
-                        fec94 = input('A - For use in certain types of aircraft ''\n'
-                                     'OT - other; ''\n'
-                                     'B4 - back''\n'
-                                     'Q - exit').upper()
-                        if (fec94 == 'A'):
-                            fec95 = input('TI - Consigned from Taiwan, Indonesia, Sri Lanka or the Philippines ''\n'
-                                          'OT - other; ''\n'
-                                          'Q - exit').upper()
-                            if (fec95 == 'TI'):
-                                self.kursor.execute(
-                                    "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                    " where left_mark <=140 and right_mark >=141;")
-
-                                print(self.results())
-                            if (fec95 == 'OT'):
-                                self.kursor.execute(
-                                    "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                    " where left_mark <=142 and right_mark >=143;")
-
-                                print(self.results())
-                        if (fec94 == 'OT'):
-                            fec96 = input('TI - other threaded fittings ''\n'
-                                          'OT - other; ''\n'
-                                          'Q - exit').upper()
-                            if (fec96 == 'TI'):
-                                self.kursor.execute(
-                                    "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                    " where left_mark <=146 and right_mark >=147;")
-
-                                print(self.results())
-                            if (fec96 == 'OT'):
-                                fec97 = input('TI - Consigned from Taiwan ''\n'
-                                              'I - Consigned from Indonesia ''\n'
-                                              'S - Consigned from Sri Lanka ''\n'
-                                              'P - Consigned from Philippines ''\n'
-                                              'OT - other; ''\n'
-                                              'Q - exit').upper()
-                                if (fec97 == 'TI'):
-                                    self.kursor.execute(
-                                        "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=149 and right_mark >=150;")
-
-                                    print(self.results())
-                                if (fec97 == 'I'):
-                                    self.kursor.execute(
-                                        "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=151 and right_mark >=152;")
-
-                                    print(self.results())
-                                if (fec97 == 'S'):
-                                    self.kursor.execute(
-                                        "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=153 and right_mark >=154;")
-
-                                    print(self.results())
-                                if (fec97 == 'P'):
-                                    self.kursor.execute(
-                                        "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=155 and right_mark >=156;")
-
-                                    print(self.results())
-
-                                if (fec97 == 'OT'):
-                                    self.kursor.execute(
-                                        "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                        " where left_mark <=157 and right_mark >=158;")
-
-                                    print(self.results())
-
 
                 if (fec92 == 'OT'):
                     fec30 = input('A - elbows and bends ''\n'
@@ -941,14 +891,14 @@ class DBConnect():
                         if (fec31 == 'A'):
                             self.kursor.execute(
                                 "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                " where left_mark <=166 and right_mark >=167;")
+                                " where left_mark <=207 and right_mark >=208;")
 
                             print(self.results())
 
                         if (fec31 == 'OT'):
                             self.kursor.execute(
                                 "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                " where left_mark <=168 and right_mark >=169;")
+                                " where left_mark <=207 and right_mark >=208;")
 
                             print(self.results())
                     if (fec30 == 'OT'):
@@ -959,14 +909,14 @@ class DBConnect():
                         if (fec32 == 'A'):
                             self.kursor.execute(
                                 "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                " where left_mark <=172 and right_mark >=173;")
+                                " where left_mark <=207 and right_mark >=208;")
 
                             print(self.results())
 
                         if (fec32 == 'OT'):
                             self.kursor.execute(
                                 "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
-                                " where left_mark <=174 and right_mark >=175;")
+                                " where left_mark <=207 and right_mark >=208;")
 
                             print(self.results())
 
@@ -1049,9 +999,6 @@ class DBConnect():
                 print(self.class_ssnth())
         if (fec2 == 'B4'):
             self.class_st()
-        else:
-            print('zła wartosc')
-            print(self.class_ssnth())
 
     def results(self):
 
@@ -1067,8 +1014,6 @@ class DBConnect():
             print(" | %5s | | %-20s | | %-82s |" % (
                 row[DEPTH], row[HTS_CODE], row[TITLE]))
         print(self.menu())
-
-
 
 
 db = DBConnect(c)
