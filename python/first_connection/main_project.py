@@ -38,6 +38,7 @@ print(c.read_data())
 
 
 
+
 class DBConnect():
 
     def __init__(self, config):
@@ -53,11 +54,6 @@ class DBConnect():
         except pymysql.MySQLError:
             print("bledne dane polaczenia")
 
-        self.vec = input(' TH - threaded''\n'
-                    'NTH - non-threaded''\n'
-                    'B - back''\n'
-                    'Q - exit').upper()
-
 
     def logowanie(self):
 
@@ -71,13 +67,22 @@ class DBConnect():
         while (True):
 
             dec = input("S - show whole table,"'\n'
-                        " C - classification, "'\n'
+                        "C - classification, "'\n'
+                        'A - add' '\n'
+                        'D - delete''\n'
+                        'U - update''\n'
                         "Q - exit").upper()
 
             if (dec == "S"):
                 self.select()
             if (dec == "C"):
                 self.class_c()
+            if (dec == "A"):
+                self.add()
+            if (dec == "D"):
+                self.delete()
+            if (dec == "U"):
+                self.update()
             if (dec == "Q"):
                 exit()
             else:
@@ -105,13 +110,11 @@ class DBConnect():
     def class_c(self):
 
         sec = input("Choose sort of part from the list: "'\n'
+                    '\n'
                     "T - tube or pipe fitting; "'\n'
-                    #"H - hose fitting. "'\n'
                     "B - back").upper()
         if (sec == 'T'):
             self.class_t()
-        #if (sec == 'H'):
-         #   self.class_h()
         if (sec == 'B'):
             self.menu()
         else:
@@ -121,12 +124,11 @@ class DBConnect():
     def class_t(self):
 
         fec = input('Choose material from the list: ' '\n'
-                    'CT  - cast steel and cast iron; ''\n'
+                '\n''CT  - cast steel and cast iron; ''\n'
                     'SST - stainless steel; ''\n'
                     'OS  - steel and other steel alloys; ''\n'
-                    #'CU  - copper and its alloys; ''\n'
-                    'AL  - aluminium and its alloys; ''\n'
-                    'B  - back').upper()
+                #'AL  - aluminium and its alloys; ''\n'
+                     'B  - back').upper()
 
         if (fec == 'CT'):
             self.class_ct()
@@ -134,8 +136,6 @@ class DBConnect():
             self.class_sst()
         if (fec == 'OS'):
             self.class_st()
-        '''if (fec == 'CU'):
-            self.class_cu()'''
         if (fec == 'AL'):
             self.class_al()
         if (fec == 'B'):
@@ -147,12 +147,12 @@ class DBConnect():
     def class_ct(self):
 
         fec1 = input('Choose material from the list: ''\n'
-                     'NM - non-malleable cast iron [including gray iron]; ''\n'
+                 '\n''NM - non-malleable cast iron [including gray iron]; ''\n'
                      'M  - malleable cast iron [including white iron]; ''\n'
                      'D  - ductile cast iron [spheroidal graphite cast iron]; ''\n'
                      'CS - cast steel; ''\n'
                      'OT - other; ''\n'
-                     'B - back').upper()
+                     'B  - back').upper()
 
         if (fec1 == 'NM'):
             self.class_nm()
@@ -174,8 +174,8 @@ class DBConnect():
 
         vec = input(' TH - threaded''\n'
                     'NTH - non-threaded''\n'
-                    'B - back''\n'
-                    'Q - exit').upper()
+                    'B   - back''\n'
+                    'Q   - exit').upper()
 
         if (vec == 'TH'):
             self.class_th()
@@ -220,14 +220,10 @@ class DBConnect():
             print('błędna wartośc')
             print(self.class_st())
 
-    def class_cu(self):
-        pass
-
     def class_al(self):
         pass
 
     def class_nm(self):
-
 
         fec2 = input(' PS - used in pressure systems, ''\n'
                      'NPS - not used in pressure systems, ''\n'
@@ -242,7 +238,6 @@ class DBConnect():
         if (fec2 == 'NPS'):
             self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
                                 " where left_mark <=7 and right_mark >=8;")
-
             print(self.results())
 
         if (fec2 == 'B'):
@@ -258,9 +253,9 @@ class DBConnect():
         fec4 = input(' TH - threaded, ''\n'
                      'NTH - non-threaded, ''\n'
                      'ISO - bodies of compression fittings using ISO DIN 13 metric thread and circular junction '
-                     'boxes without having a lid''\n'
-                     'B - back''\n'
-                     'Q - exit').upper()
+                            'boxes without having a lid''\n'
+                     '  B - back''\n'
+                     '  Q - exit').upper()
 
         if (fec4 == 'TH'):
             self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title "
@@ -286,10 +281,10 @@ class DBConnect():
     def class_d(self):
 
         fec5 = input('ISO - threaded bodies of compression fittings using ISO DIN 13 metric thread''\n'
-                     'TH - other threaded''\n'
+                     'TH  - other threaded''\n'
                      'NTH - non-threaded, ''\n'
-                     'BB - back''\n'
-                     'Q - exit').upper()
+                     'BB  - back''\n'
+                     'Q   - exit').upper()
 
         if (fec5 == 'TH'):
             self.kursor.execute("select depth, concat(repeat('-', depth), hts_code) as hts_code, title "
@@ -322,12 +317,12 @@ class DBConnect():
         print(self.results())
 
     def class_th(self):
-        fec6 = input('E - elbows; ''\n'
+        fec6 = input('E  - elbows; ''\n'
                      'NB - bends; ''\n'
                      'SL - sleeves; ''\n'
                      'OT - other; ''\n'
-                     'B - back''\n'
-                     'Q - exit').upper()
+                     'B  - back''\n'
+                     'Q  - exit').upper()
         if (fec6 == 'E' or 'NB'):
             self.class_ebe()
         if (fec6 == 'SL'):
@@ -424,11 +419,11 @@ class DBConnect():
             print(self.class_ott())
 
     def class_sth(self):
-        fec01 = input('F - flanges; ''\n'
+        fec01 = input('F  - flanges; ''\n'
                       'TB - butt welding fittings''\n'
                       'OT - other; ''\n'
-                      'B - back''\n'
-                      'Q - exit').upper()
+                      'B  - back''\n'
+                      'Q  - exit').upper()
         if (fec01 == 'F'):
             self.class_f()
         if (fec01 == 'TB'):
@@ -471,10 +466,10 @@ class DBConnect():
 
     def class_oot(self):
 
-        fec12 = input('A - For use in certain types of aircraft ''\n'
+        fec12 = input('A  - For use in certain types of aircraft ''\n'
                       'OT - other; ''\n'
                       'B4 - back''\n'
-                      'Q - exit').upper()
+                      'Q  - exit').upper()
         if (fec12 == 'A'):
             self.kursor.execute(
                 "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
@@ -500,8 +495,8 @@ class DBConnect():
         fec02 = input('EE - elbows; ''\n'
                       'NB - bends; ''\n'
                       'OT - other; ''\n'
-                      'B - back''\n'
-                      'Q - exit').upper()
+                      'B  - back''\n'
+                      'Q  - exit').upper()
         if (fec02 == 'EE' or 'NB'):
             self.class_ee()
         if (fec02 == 'OT'):
@@ -515,14 +510,14 @@ class DBConnect():
             print(self.class_bt())
 
     def class_ee(self):
-        fec03 = input('AU - Of austenitic stainless steel grades, corresponding to AISI types 304, 304L, 316, 316L,'
-                      ' 316Ti, 321 and 321H and their equivalent in the other norms, with a greatest external '
-                      'diameter not exceeding 406.4 mm and a wall thickness of 16 mm or less, with a roughness '
-                      'average (Ra) of the internal surface not less than 0.8 micrometres, not flanged, '
-                      'whether or not finished; ''\n'
+        fec03 = input('AU - Of austenitic stainless steel grades, corresponding to AISI types 304, 304L, 316, 316L,''\n'
+                           ' 316Ti, 321 and 321H and their equivalent in the other norms, with a greatest external ''\n'
+                           'diameter not exceeding 406.4 mm and a wall thickness of 16 mm or less, with a roughness ''\n'
+                           'average (Ra) of the internal surface not less than 0.8 micrometres, not flanged, ''\n'
+                           'whether or not finished; ''\n'
                       'OT - other; ''\n'
                       'B4 - back''\n'
-                      'Q - exit').upper()
+                      'Q  - exit').upper()
         if (fec03 == 'AU'):
             self.class_au()
         if (fec03 == 'OT'):
@@ -537,10 +532,10 @@ class DBConnect():
 
     def class_au(self):
 
-        fec04 = input('A - For use in certain types of aircraft ''\n'
+        fec04 = input('A  - For use in certain types of aircraft ''\n'
                       'OT - other; ''\n'
                       'B4 - back''\n'
-                      'Q - exit').upper()
+                      'Q  - exit').upper()
         if (fec04 == 'A'):
             self.kursor.execute(
                 "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
@@ -586,11 +581,11 @@ class DBConnect():
             print(self.class_too())
 
     def class_to(self):
-        fec06 = input('AU - Of austenitic stainless steel grades, corresponding to AISI types 304, 304L, 316, 316L,'
-                      ' 316Ti, 321 and 321H and their equivalent in the other norms, with a greatest external '
-                      'diameter not exceeding 406.4 mm and a wall thickness of 16 mm or less, with a roughness '
-                      'average (Ra) of the internal surface not less than 0.8 micrometres, not flanged, '
-                      'whether or not finished; ''\n'
+        fec06 = input('AU - Of austenitic stainless steel grades, corresponding to AISI types 304, 304L, 316, 316L,''\n'
+                           ' 316Ti, 321 and 321H and their equivalent in the other norms, with a greatest external ''\n'
+                           'diameter not exceeding 406.4 mm and a wall thickness of 16 mm or less, with a roughness ''\n'
+                           'average (Ra) of the internal surface not less than 0.8 micrometres, not flanged, ''\n'
+                           'whether or not finished; ''\n'
                       'OT - other; ''\n'
                       'B4 - back''\n'
                       'Q - exit').upper()
@@ -608,10 +603,10 @@ class DBConnect():
 
     def class_ua(self):
 
-        fec07 = input('A - For use in certain types of aircraft ''\n'
+        fec07 = input('A  - For use in certain types of aircraft ''\n'
                       'OT - other; ''\n'
                       'B4 - back''\n'
-                      'Q - exit').upper()
+                      'Q  - exit').upper()
         if (fec07 == 'A'):
             self.kursor.execute(
                 "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
@@ -634,10 +629,10 @@ class DBConnect():
 
     def class_toto(self):
 
-        fec08 = input('A - For use in certain types of aircraft ''\n'
+        fec08 = input('A  - For use in certain types of aircraft ''\n'
                       'OT - other; ''\n'
                       'B4 - back''\n'
-                      'Q - exit').upper()
+                      'Q  - exit').upper()
         if (fec08 == 'A'):
             self.kursor.execute(
                 "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
@@ -752,16 +747,16 @@ class DBConnect():
 
     def class_ssnth(self):
 
-        fec2 = input('FL - flanges; '
-                     'TT - butt welding fitting; '
-                     'OT - other; '
+        fec2 = input('FL - flanges; ''\n'
+                     'TT - butt welding fitting; ''\n'
+                     'OT - other; ''\n'
                      'B4 - back').upper()
         if (fec2 == 'FL'):
 
-            fec8 = input('A - For use in certain types of aircraft ''\n'
+            fec8 = input('A  - For use in certain types of aircraft ''\n'
                          'OT - other; ''\n'
                          'B4 - back''\n'
-                         'Q - exit').upper()
+                         'Q  - exit').upper()
             if (fec8 == 'A'):
                 self.kursor.execute(
                     "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
@@ -769,11 +764,13 @@ class DBConnect():
 
                 print(self.results())
             if (fec8 == 'OT'):
+
                 self.kursor.execute(
                     "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
                     " where left_mark <=95 and right_mark >=96;")
 
                 print(self.results())
+
             if (fec8 == 'Q'):
                 exit()
 
@@ -782,21 +779,21 @@ class DBConnect():
                 fec92 = input('A - With greatest external diameter not exceeding 609,6 mm ''\n'
                              'OT - With greatest external diameter exceeding 609,6 mm ''\n'
                              'B4 - back''\n'
-                             'Q - exit').upper()
+                             'Q  - exit').upper()
                 if (fec92 == 'A'):
-                    fec93 = input('A - elbows and bends ''\n'
+                    fec93 = input('A  - elbows and bends ''\n'
                                   'OT - other; ''\n'
                                   'B4 - back''\n'
-                                  'Q - exit').upper()
+                                  'Q  - exit').upper()
                     if (fec93 == 'A'):
                         fec94 = input('A - For use in certain types of aircraft ''\n'
                                      'OT - other; ''\n'
                                      'B4 - back''\n'
-                                     'Q - exit').upper()
+                                     'Q  - exit').upper()
                         if (fec94 == 'A'):
                             fec95 = input('TI - Consigned from Taiwan, Indonesia, Sri Lanka or the Philippines ''\n'
                                           'OT - other; ''\n'
-                                          'Q - exit').upper()
+                                          'Q  - exit').upper()
                             if (fec95 == 'TI'):
                                 self.kursor.execute(
                                     "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
@@ -812,7 +809,7 @@ class DBConnect():
                         if (fec94 == 'OT'):
                             fec96 = input('TI - other threaded fittings ''\n'
                                           'OT - other; ''\n'
-                                          'Q - exit').upper()
+                                          'Q  - exit').upper()
                             if (fec96 == 'TI'):
                                 self.kursor.execute(
                                     "select depth, concat(repeat('-', depth), hts_code) as hts_code, title from chapter_73"
@@ -926,7 +923,6 @@ class DBConnect():
                                         " where left_mark <=157 and right_mark >=158;")
 
                                     print(self.results())
-
 
                 if (fec92 == 'OT'):
                     fec30 = input('A - elbows and bends ''\n'
@@ -1067,6 +1063,70 @@ class DBConnect():
             print(" | %5s | | %-20s | | %-82s |" % (
                 row[DEPTH], row[HTS_CODE], row[TITLE]))
         print(self.menu())
+
+    def add(self):
+        dac = input('R - add record; ''\n'
+                    'B - add branch; ''\n'
+                    'B4 - back').upper()
+        if (dac == 'R'):
+
+            a = input('Enter the left_mark:')
+            print(type(a))
+            aa = int(a)
+            print(type(aa))
+            self.kursor.execute("update chapter_76 set left_mark = left_mark + 2 where left_mark >= %i;" % aa)
+            self.conn.commit()
+
+            b = input('Enter the right_mark:')
+            bb = int(b)
+
+            self.kursor.execute("update chapter_76 set right_mark = right_mark +2 where right_mark >= %i;" % bb)
+            self.conn.commit()
+
+            f = input('enter the title:')
+            d = input('enter the hts_code:')
+            print(f, d)
+            self.kursor.execute("insert into chapter_76 (HTS_code, Title) values (%s, %s);", (d, f))
+
+            self.conn.commit()
+            e = input('enter the depth:')
+            g = input('enter the id:')
+            gg = int(g)
+            ee = int(e)
+
+            self.kursor.execute("update chapter_76 set left_mark = %s where id = %s;", (aa, gg))
+            self.conn.commit()
+            self.kursor.execute("update chapter_76 set right_mark = %s where Id = %s;", [bb, gg])
+            self.conn.commit()
+            self.kursor.execute("update chapter_76 set Depth = %s where id = %s", [ee, gg])
+            self.conn.commit()
+
+            self.kursor.execute("select * from chapter_76 where left_mark = %i" % aa)
+
+            chapter_76 = self.kursor.fetchall()
+
+            print(" | %3s | | %-12s | | %9s | | %10s | | %5s | | %-360s |" % (
+                'id', 'HTS_code', 'left_mark', 'right_mark', 'depth', 'title'))
+
+            for row in chapter_76:
+                ID = 0
+                LEFT_MARK = 1
+                RIGHT_MARK = 2
+                DEPTH = 3
+                HTS_CODE = 4
+                TITLE = 5
+                print(" | %3i | | %-12s | | %9i | | %10i | | %5i | | %-360s |" % (
+                    row[ID], row[LEFT_MARK], row[RIGHT_MARK], row[DEPTH], row[HTS_CODE], row[TITLE]))
+            print(self.menu())
+
+        if (dac == 'B'):
+            pass
+
+    def delete(self):
+        pass
+
+    def update(self):
+        pass
 
 
 
