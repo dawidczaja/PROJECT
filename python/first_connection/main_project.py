@@ -1071,9 +1071,7 @@ class DBConnect():
         if (dac == 'R'):
 
             a = input('Enter the left_mark:')
-            print(type(a))
             aa = int(a)
-            print(type(aa))
             self.kursor.execute("update chapter_76 set left_mark = left_mark + 2 where left_mark >= %i;" % aa)
             self.conn.commit()
 
@@ -1085,20 +1083,17 @@ class DBConnect():
 
             f = input('enter the title:')
             d = input('enter the hts_code:')
-            print(f, d)
             self.kursor.execute("insert into chapter_76 (HTS_code, Title) values (%s, %s);", (d, f))
 
             self.conn.commit()
             e = input('enter the depth:')
-            g = input('enter the id:')
-            gg = int(g)
             ee = int(e)
 
-            self.kursor.execute("update chapter_76 set left_mark = %s where id = %s;", (aa, gg))
+            self.kursor.execute("update chapter_76 set left_mark = %s where hts_code = %s;", (aa, d))
             self.conn.commit()
-            self.kursor.execute("update chapter_76 set right_mark = %s where Id = %s;", [bb, gg])
+            self.kursor.execute("update chapter_76 set right_mark = %s where hts_code = %s;", [bb, d])
             self.conn.commit()
-            self.kursor.execute("update chapter_76 set Depth = %s where id = %s", [ee, gg])
+            self.kursor.execute("update chapter_76 set Depth = %s where hts_code = %s", [ee, d])
             self.conn.commit()
 
             self.kursor.execute("select * from chapter_76 where left_mark = %i" % aa)
