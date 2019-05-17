@@ -90,13 +90,13 @@ class DBConnect():
 
     def select(self):
 
-        self.kursor.execute("select * from chapter_73")
-        chapter_73 = self.kursor.fetchall()
+        self.kursor.execute("select * from chapter_76")
+        chapter_76 = self.kursor.fetchall()
         print(" | %3s | | %-12s | | %9s | | %10s | | %5s | | %-360s |" % (
             'id', 'HTS_code', 'left_mark', 'right_mark', 'depth', 'title'))
 
         i = 1
-        for row in chapter_73:
+        for row in chapter_76:
             ID = 0
             LEFT_MARK = 1
             RIGHT_MARK = 2
@@ -1053,77 +1053,147 @@ class DBConnect():
 
         chapter_73 = self.kursor.fetchall()
 
-        print(" | %5s | | %-20s | | %-82s | " % (
-            'depth', 'HTS_code', 'title'))
+        print(" | %5s | | %-20s | | %-82s | " % ('depth', 'HTS_code', 'title'))
 
         for row in chapter_73:
             DEPTH = 0
             HTS_CODE = 1
             TITLE = 2
-            print(" | %5s | | %-20s | | %-82s |" % (
-                row[DEPTH], row[HTS_CODE], row[TITLE]))
+            print(" | %5s | | %-20s | | %-82s |" % (row[DEPTH], row[HTS_CODE], row[TITLE]))
         print(self.menu())
 
+    def results2(self):
+
+        chapter_76 = self.kursor.fetchall()
+
+        print(" | %3s | | %-12s | | %9s | | %10s | | %5s | | %-360s |" % (
+            'id', 'HTS_code', 'left_mark', 'right_mark', 'depth', 'title'))
+
+        for row in chapter_76:
+            ID = 0
+            LEFT_MARK = 1
+            RIGHT_MARK = 2
+            DEPTH = 3
+            HTS_CODE = 4
+            TITLE = 5
+            print(" | %3i | | %-12s | | %9i | | %10i | | %5i | | %-360s |" % (
+                row[ID], row[LEFT_MARK], row[RIGHT_MARK], row[DEPTH], row[HTS_CODE], row[TITLE]))
+        print(self.menu())
+
+
     def add(self):
-        dac = input('R - add record; ''\n'
-                    'B - add branch; ''\n'
-                    'B4 - back').upper()
-        if (dac == 'R'):
 
-            a = input('Enter the left_mark:')
-            aa = int(a)
-            self.kursor.execute("update chapter_76 set left_mark = left_mark + 2 where left_mark >= %i;" % aa)
-            self.conn.commit()
+        self.select()
 
-            b = input('Enter the right_mark:')
-            bb = int(b)
+        a = input('Enter the left_mark:')
+        aa = int(a)
+        self.kursor.execute("update chapter_76 set left_mark = left_mark + 2 where left_mark >= %i;" % aa)
+        self.conn.commit()
 
-            self.kursor.execute("update chapter_76 set right_mark = right_mark +2 where right_mark >= %i;" % bb)
-            self.conn.commit()
+        b = input('Enter the right_mark:')
+        bb = int(b)
 
-            f = input('enter the title:')
-            d = input('enter the hts_code:')
-            self.kursor.execute("insert into chapter_76 (HTS_code, Title) values (%s, %s);", (d, f))
+        self.kursor.execute("update chapter_76 set right_mark = right_mark +2 where right_mark >= %i;" % bb)
+        self.conn.commit()
 
-            self.conn.commit()
-            e = input('enter the depth:')
-            ee = int(e)
+        f = input('enter the title:')
+        d = input('enter the hts_code:')
+        self.kursor.execute("insert into chapter_76 (HTS_code, Title) values (%s, %s);", (d, f))
 
-            self.kursor.execute("update chapter_76 set left_mark = %s where hts_code = %s;", (aa, d))
-            self.conn.commit()
-            self.kursor.execute("update chapter_76 set right_mark = %s where hts_code = %s;", [bb, d])
-            self.conn.commit()
-            self.kursor.execute("update chapter_76 set Depth = %s where hts_code = %s", [ee, d])
-            self.conn.commit()
+        self.conn.commit()
+        e = input('enter the depth:')
+        ee = int(e)
 
-            self.kursor.execute("select * from chapter_76 where left_mark = %i" % aa)
+        self.kursor.execute("update chapter_76 set left_mark = %s where hts_code = %s;", (aa, d))
+        self.conn.commit()
+        self.kursor.execute("update chapter_76 set right_mark = %s where hts_code = %s;", [bb, d])
+        self.conn.commit()
+        self.kursor.execute("update chapter_76 set Depth = %s where hts_code = %s", [ee, d])
+        self.conn.commit()
 
-            chapter_76 = self.kursor.fetchall()
+        self.kursor.execute("select * from chapter_76 where left_mark = %i" % aa)
 
-            print(" | %3s | | %-12s | | %9s | | %10s | | %5s | | %-360s |" % (
-                'id', 'HTS_code', 'left_mark', 'right_mark', 'depth', 'title'))
-
-            for row in chapter_76:
-                ID = 0
-                LEFT_MARK = 1
-                RIGHT_MARK = 2
-                DEPTH = 3
-                HTS_CODE = 4
-                TITLE = 5
-                print(" | %3i | | %-12s | | %9i | | %10i | | %5i | | %-360s |" % (
-                    row[ID], row[LEFT_MARK], row[RIGHT_MARK], row[DEPTH], row[HTS_CODE], row[TITLE]))
-            print(self.menu())
-
-        if (dac == 'B'):
-            pass
+        self.results2()
 
     def delete(self):
-        pass
+        self.select()
+
+        a = input('Enter the Id:')
+        aa = int(a)
+        self.kursor.execute("delete from chapter_76 where Id = %i;" % aa)
+        self.sure()
 
     def update(self):
-        pass
 
+        dec = input("S - change left mark,"'\n'
+                    "C - change right mark, "'\n'
+                    'A - change hts code' '\n'
+                    'D - title''\n'
+                    'U - depth''\n'
+                    "Q - exit").upper()
 
+        if (dec == "S"):
+            self.select()
+
+            a = input('Enter the left mark:')
+            aa = int(a)
+            e = input('enter the id:')
+            ee = int(e)
+
+            self.kursor.execute("update chapter_76 set left_mark = %s where id = %s;", (aa, ee))
+            self.sure()
+        if (dec == "C"):
+            self.select()
+
+            a = input('Enter the right mark:')
+            aa = int(a)
+            e = input('enter the id:')
+            ee = int(e)
+
+            self.kursor.execute("update chapter_76 set right_mark = %s where id = %s;", (aa, ee))
+            self.sure()
+        if (dec == "A"):
+            self.select()
+
+            a = input('Enter the hts code:')
+            e = input('enter the id:')
+            ee = int(e)
+
+            self.kursor.execute("update chapter_76 set hts_code = %s where id = %s;", (a, ee))
+            self.sure()
+        if (dec == "D"):
+            self.select()
+
+            a = input('Enter the title:')
+            e = input('enter the id:')
+            ee = int(e)
+
+            self.kursor.execute("update chapter_76 set title = %s where id = %s;", (a, ee))
+            self.sure()
+        if (dec == "U"):
+            self.select()
+
+            a = input('Enter the depth:')
+            aa = int(a)
+            e = input('enter the id:')
+            ee = int(e)
+
+            self.kursor.execute("update chapter_76 set depth = %s where id = %s;", (aa, ee))
+            self.sure()
+        if (dec == "Q"):
+            exit()
+        else:
+            print('błędna wartośc')
+            self.update()
+
+    def sure(self):
+
+        dec = input("Are You sure? Y/N").upper()
+        if (dec == "Y"):
+            self.conn.commit()
+        else:
+            self.conn.rollback()
+            print("doesn't changed")
 
 
 db = DBConnect(c)

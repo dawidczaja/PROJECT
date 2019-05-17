@@ -15,10 +15,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_project.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="1093" column="102" lean-forward="true" selection-start-line="1093" selection-start-column="102" selection-end-line="1093" selection-end-column="102" />
+            <state relative-caret-position="326">
+              <caret line="102" column="21" lean-forward="true" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#1534#2220#0" />
                 <element signature="e#2912#3268#0" />
                 <element signature="e#3302#3977#0" />
                 <element signature="e#4012#4840#0" />
@@ -45,6 +46,7 @@
                 <element signature="e#19954#20846#0" />
                 <element signature="e#20883#21776#0" />
                 <element signature="e#21813#25217#0" />
+                <element signature="e#25255#41735#0" />
                 <element signature="e#41769#42135#0" />
               </folding>
             </state>
@@ -136,8 +138,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/PycharmProjects/introducction/intro/day5/crud.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="143" column="13" lean-forward="true" selection-start-line="143" selection-start-column="13" selection-end-line="143" selection-end-column="13" />
+            <state relative-caret-position="440">
+              <caret line="146" selection-start-line="140" selection-end-line="146" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -186,8 +188,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="475" />
-    <option name="y" value="250" />
+    <option name="x" value="584" />
+    <option name="y" value="105" />
     <option name="width" value="1292" />
     <option name="height" value="685" />
   </component>
@@ -349,12 +351,12 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12153518" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.077292114" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2535211" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19501625" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -505,8 +507,8 @@
     </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/introducction/intro/day5/crud.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="143" column="13" lean-forward="true" selection-start-line="143" selection-start-column="13" selection-end-line="143" selection-end-column="13" />
+        <state relative-caret-position="440">
+          <caret line="146" selection-start-line="140" selection-end-line="146" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -515,10 +517,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_project.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="1093" column="102" lean-forward="true" selection-start-line="1093" selection-start-column="102" selection-end-line="1093" selection-end-column="102" />
+        <state relative-caret-position="326">
+          <caret line="102" column="21" lean-forward="true" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#1534#2220#0" />
             <element signature="e#2912#3268#0" />
             <element signature="e#3302#3977#0" />
             <element signature="e#4012#4840#0" />
@@ -545,6 +548,7 @@
             <element signature="e#19954#20846#0" />
             <element signature="e#20883#21776#0" />
             <element signature="e#21813#25217#0" />
+            <element signature="e#25255#41735#0" />
             <element signature="e#41769#42135#0" />
           </folding>
         </state>
